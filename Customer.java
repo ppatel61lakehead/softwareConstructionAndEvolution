@@ -8,12 +8,15 @@ public class Customer {
     public Customer(String name) {
         this.name = name;
     }
+    
     public String getName() {
         return name;
     }
+    
     public void addRental(Rental arg) {
         rentals.add(arg);
     }
+    
     public String statement() {
         double totalAmount = 0;
         int frequentRenterPoints = 0;
@@ -24,7 +27,6 @@ public class Customer {
             Rental each = (Rental) rentalIterator.next();
 
             //determine amounts for each line
-
             switch (each.getMovie().getPriceCode()) {
                 case Movie.REGULAR:
                     thisAmount += 2;

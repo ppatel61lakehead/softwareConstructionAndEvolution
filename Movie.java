@@ -11,12 +11,15 @@ public class Movie {
         this.title = title;
         this.priceCode = priceCode;
     }
+    
     public int getPriceCode() {
         return priceCode;
     }
+    
     public void setPriceCode(int arg) {
         priceCode = arg;
     }
+    
     public String getTitle() {
         return title;
     }
