@@ -17,6 +17,34 @@ public class Customer {
         rentals.add(arg);
     }
     
+    /*--- The chargeForRental(Rental each) method is extracted from statement() method.
+    The Rental object is passed as a parameter and the chargeForRental method is called in each iteration
+    the rest switch statement code is kept same, other than introducing a new temporary variable named 
+    'amount', in which the individual rent charge is calculated and stored and then returned to the 
+    statement() method.
+    ---*/
+    private double chargeForRental(Rental each) {
+    	double amount = 0;
+    	
+    	switch (each.getMovie().getPriceCode()) {
+	        case Movie.REGULAR:
+	        	amount += 2;
+	            if (each.getDaysRented() > 2)
+	            	amount += (each.getDaysRented() - 2) * 1.5;
+	            break;
+	        case Movie.NEW_RELEASE:
+	        	amount += each.getDaysRented() * 3;
+	            break;
+	        case Movie.CHILDRENS:
+	        	amount += 1.5;
+	            if (each.getDaysRented() > 3)
+	            	amount += (each.getDaysRented() - 3) * 1.5;
+	            break;
+	    }
+    	
+    	return amount;
+    }
+    
     public String statement() {
         double totalAmount = 0;
         int frequentRenterPoints = 0;
@@ -26,22 +54,8 @@ public class Customer {
             double thisAmount = 0;
             Rental each = (Rental) rentalIterator.next();
 
-            //determine amounts for each line
-            switch (each.getMovie().getPriceCode()) {
-                case Movie.REGULAR:
-                    thisAmount += 2;
-                    if (each.getDaysRented() > 2)
-                        thisAmount += (each.getDaysRented() - 2) * 1.5;
-                    break;
-                case Movie.NEW_RELEASE:
-                    thisAmount += each.getDaysRented() * 3;
-                    break;
-                case Movie.CHILDRENS:
-                    thisAmount += 1.5;
-                    if (each.getDaysRented() > 3)
-                        thisAmount += (each.getDaysRented() - 3) * 1.5;
-                    break;
-            }
+            //determine rental charge for each movie by calling the chargeForRental() method
+            thisAmount = chargeForRental(each);
 
             // add frequent renter points
             frequentRenterPoints++;
