@@ -1,5 +1,4 @@
 import junit.framework.*;
-import java.ui.*;
 
 public class TestMovieRental extends TestCase {
 	
