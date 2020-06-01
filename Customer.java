@@ -25,6 +25,15 @@ public class Customer {
     	return customerName;
     }
     
+    //footerLine() method is extracted here
+    public String footerLine(double totalCharge, int frequentRenterPoints) {
+    	String footer;
+    	
+    	footer = "Total = $" + totalCharge + "\n" + "Frequent renter points = " + frequentRenterPoints + "\n" + "---\n";
+    	
+    	return footer;
+    }
+    
     public String statement() {
         double totalCharge = 0;
         int frequentRenterPoints = 0;
@@ -50,9 +59,7 @@ public class Customer {
         }
         
         //add footer lines
-        result += "Total = $" + totalCharge + "\n";
-        result += "Frequent renter points = " + frequentRenterPoints + "\n";
-        return result + "---\n";
+        return result + footerLine(totalCharge, frequentRenterPoints);
     }
 
 }
