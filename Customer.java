@@ -17,6 +17,14 @@ public class Customer {
         rentals.add(arg);
     }
     
+    private String rentalLine(int daysRented, String movie, double charge) {
+    	String rentalLine;
+    	
+    	rentalLine = daysRented + " days of '" + movie + "' $" + charge + "\n";
+    			
+    	return rentalLine;
+    }
+    
     public String statement() {
         double totalCharge = 0;
         int frequentRenterPoints = 0;
@@ -35,9 +43,9 @@ public class Customer {
             frequentRenterPoints = rental.frequentRenterPoints(frequentRenterPoints);
 
             //show figures for this rental
-            result += rental.getDaysRented() +
-                " days of '" + rental.getMovie().getTitle() +
-                "' $" + String.valueOf(charge) + "\n";
+            //rentalLine() method is extracted above
+            result += rentalLine(rental.getDaysRented(), rental.getMovie().getTitle(),charge);
+            
             totalCharge += charge;
         }
         
