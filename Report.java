@@ -14,4 +14,8 @@ public class Report {
     	
     	return footer;
     }
+    
+    public String rentalLine(int daysRented, String title, double charge) {
+    	return daysRented + " days of '" + title +"' $" + charge + "\n";
+	}
 }

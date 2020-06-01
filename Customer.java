@@ -37,7 +37,7 @@ public class Customer {
             frequentRenterPoints = rental.frequentRenterPoints(frequentRenterPoints);
 
             //show figures for this rental
-            result += rental.rentalLine();
+            result += rental.rentalLine(report);
             
             totalCharge += charge;
         }

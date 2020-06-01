@@ -30,11 +30,7 @@ public class Rental {
     	return frequentRenterPoints;
     }
     
-    public String rentalLine() {
-    	String rentalLine;
-    	
-    	rentalLine = daysRented + " days of '" + movie.getTitle() + "' $" + charge() + "\n";
-    			
-    	return rentalLine;
-    }
+    public String rentalLine(Report report) {
+    	return report.rentalLine(daysRented, movie.getTitle(), charge());
+	}
 }
