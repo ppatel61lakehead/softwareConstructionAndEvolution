@@ -20,9 +20,6 @@ public class Rental {
     	return movie.charge(daysRented);
     }
     
-    /*
-     * The frequentRenterPoints() method has been extracted to Rental.java from Customer.java
-     */
     public int frequentRenterPoints(int frequentRenterPoints) {
     	frequentRenterPoints++;
     	
@@ -31,5 +28,13 @@ public class Rental {
         	frequentRenterPoints++;
         
     	return frequentRenterPoints;
+    }
+    
+    public String rentalLine() {
+    	String rentalLine;
+    	
+    	rentalLine = daysRented + " days of '" + movie.getTitle() + "' $" + charge() + "\n";
+    			
+    	return rentalLine;
     }
 }
