@@ -22,7 +22,9 @@ public class Customer {
         int frequentRenterPoints = 0;
         Iterator rentalIterator = rentals.iterator();
         String result = "Rentals: " + getName() + "\n";
-        while (rentalIterator.hasNext()) {
+        
+    	//while loop is changed to for loop
+        for (; rentalIterator.hasNext();) {
             double charge = 0;
             Rental rental = (Rental) rentalIterator.next();
 
@@ -38,6 +40,7 @@ public class Customer {
                 "' $" + String.valueOf(charge) + "\n";
             totalCharge += charge;
         }
+        
         //add footer lines
         result += "Total = $" + totalCharge + "\n";
         result += "Frequent renter points = " + frequentRenterPoints + "\n";
