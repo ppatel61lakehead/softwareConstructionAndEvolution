@@ -24,22 +24,19 @@ public class Movie {
         return title;
     }
     
-    /*
-     * The method charge() has been extracted from Rental.java
-     */
     public double charge(int daysRented ) {
 		double charge = 0;
 		    	
-    	switch (getPriceCode()) {
-	        case Movie.REGULAR:
+    	switch (priceCode) {
+	        case REGULAR:
 	        	charge += 2;
 	            if (daysRented > 2)
 	            	charge += (daysRented - 2) * 1.5;
 	            break;
-	        case Movie.NEW_RELEASE:
+	        case NEW_RELEASE:
 	        	charge += daysRented * 3;
 	            break;
-	        case Movie.CHILDRENS:
+	        case CHILDRENS:
 	        	charge += 1.5;
 	            if (daysRented > 3)
 	            	charge += (daysRented - 3) * 1.5;
@@ -47,5 +44,12 @@ public class Movie {
 	    }
     	
     	return charge;
+    }
+    
+    /*
+     * A boolean method to check for new releases
+     */
+    public boolean isNewRelease() {
+    	return priceCode == NEW_RELEASE;
     }
 }
