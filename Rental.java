@@ -16,10 +16,20 @@ public class Rental {
         return movie;
     }
     
-    /*
-     *  The method charge has been extracted from Rental.java class to Movie.java.
-     */
     public double charge() {
     	return movie.charge(daysRented);
+    }
+    
+    /*
+     * The frequentRenterPoints() method has been extracted to Rental.java from Customer.java
+     */
+    public int frequentRenterPoints(int frequentRenterPoints) {
+    	frequentRenterPoints++;
+    	
+    	// add bonus for a two day new release rental
+        if ((getMovie().getPriceCode() == Movie.NEW_RELEASE) && daysRented > 1)
+        	frequentRenterPoints++;
+        
+    	return frequentRenterPoints;
     }
 }
