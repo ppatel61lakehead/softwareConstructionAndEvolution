@@ -15,13 +15,22 @@ public class Customer {
     
     public void addRental(Rental arg) {
         rentals.add(arg);
-    }    
+    }
+    
+    public String headerLine(String name) {
+    	String customerName;
+    	
+    	customerName = "Rentals: " + name + "\n";;
+    	
+    	return customerName;
+    }
     
     public String statement() {
         double totalCharge = 0;
         int frequentRenterPoints = 0;
         Iterator rentalIterator = rentals.iterator();
-        String result = "Rentals: " + getName() + "\n";
+        //headerLine() method is created above
+        String result = headerLine(getName());
         
     	//while loop is changed to for loop
         for (; rentalIterator.hasNext();) {
@@ -35,7 +44,6 @@ public class Customer {
             frequentRenterPoints = rental.frequentRenterPoints(frequentRenterPoints);
 
             //show figures for this rental
-            //rentalLine() method is extracted to Rental.java
             result += rental.rentalLine();
             
             totalCharge += charge;
