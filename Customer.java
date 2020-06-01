@@ -17,29 +17,13 @@ public class Customer {
         rentals.add(arg);
     }
     
-    public String headerLine(String name) {
-    	String customerName;
-    	
-    	customerName = "Rentals: " + name + "\n";;
-    	
-    	return customerName;
-    }
-    
-    //footerLine() method is extracted here
-    public String footerLine(double totalCharge, int frequentRenterPoints) {
-    	String footer;
-    	
-    	footer = "Total = $" + totalCharge + "\n" + "Frequent renter points = " + frequentRenterPoints + "\n" + "---\n";
-    	
-    	return footer;
-    }
-    
     public String statement() {
         double totalCharge = 0;
         int frequentRenterPoints = 0;
         Iterator rentalIterator = rentals.iterator();
-        //headerLine() method is created above
-        String result = headerLine(getName());
+        
+        Report report = new Report();
+        String result = report.headerLine(getName());
         
     	//while loop is changed to for loop
         for (; rentalIterator.hasNext();) {
@@ -59,7 +43,7 @@ public class Customer {
         }
         
         //add footer lines
-        return result + footerLine(totalCharge, frequentRenterPoints);
+        return result + report.footerLine(totalCharge, frequentRenterPoints);
     }
 
 }
