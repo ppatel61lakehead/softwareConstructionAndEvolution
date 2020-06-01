@@ -18,11 +18,14 @@ public class Customer {
     }
     
     public String statement() {
+    	return statement(new Report());
+	}
+    
+    public String statement(Report report) {
         double totalCharge = 0;
         int frequentRenterPoints = 0;
         Iterator rentalIterator = rentals.iterator();
         
-        Report report = new Report();
         String result = report.headerLine(getName());
         
     	//while loop is changed to for loop
