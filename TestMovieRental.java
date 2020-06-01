@@ -1,4 +1,5 @@
 import junit.framework.*;
+import java.ui.*;
 
 public class TestMovieRental extends TestCase {
 	
@@ -17,6 +18,8 @@ public class TestMovieRental extends TestCase {
             "Frequent renter points = 0\n" +
             "---\n",
             customer.statement());
+        
+        System.out.println(customer.statement());
     }
     
     public void testRentingCustomer() {
@@ -29,6 +32,8 @@ public class TestMovieRental extends TestCase {
             "Frequent renter points = 3\n" +
             "---\n",
             customer.statement());
+        
+        System.out.println(customer.statement());
     }
     
     /*---- public void testHtmlCustomer() {

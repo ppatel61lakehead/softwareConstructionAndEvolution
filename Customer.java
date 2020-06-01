@@ -17,32 +17,26 @@ public class Customer {
         rentals.add(arg);
     }
     
-    /*--- The chargeForRental(Rental each) method is extracted from statement() method.
-    The Rental object is passed as a parameter and the chargeForRental method is called in each iteration
-    the rest switch statement code is kept same, other than introducing a new temporary variable named 
-    'amount', in which the individual rent charge is calculated and stored and then returned to the 
-    statement() method.
-    ---*/
-    private double chargeForRental(Rental each) {
-    	double amount = 0;
+    private double chargeForRental(Rental rental) {
+    	double charge = 0;
     	
-    	switch (each.getMovie().getPriceCode()) {
+    	switch (rental.getMovie().getPriceCode()) {
 	        case Movie.REGULAR:
-	        	amount += 2;
-	            if (each.getDaysRented() > 2)
-	            	amount += (each.getDaysRented() - 2) * 1.5;
+	        	charge += 2;
+	            if (rental.getDaysRented() > 2)
+	            	charge += (rental.getDaysRented() - 2) * 1.5;
 	            break;
 	        case Movie.NEW_RELEASE:
-	        	amount += each.getDaysRented() * 3;
+	        	charge += rental.getDaysRented() * 3;
 	            break;
 	        case Movie.CHILDRENS:
-	        	amount += 1.5;
-	            if (each.getDaysRented() > 3)
-	            	amount += (each.getDaysRented() - 3) * 1.5;
+	        	charge += 1.5;
+	            if (rental.getDaysRented() > 3)
+	            	charge += (rental.getDaysRented() - 3) * 1.5;
 	            break;
 	    }
     	
-    	return amount;
+    	return charge;
     }
     
     public String statement() {
