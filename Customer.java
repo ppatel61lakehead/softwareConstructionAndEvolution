@@ -17,6 +17,19 @@ public class Customer {
         rentals.add(arg);
     }
     
+    /*
+     * The frequentRenterPoints() method has been extracted locally first
+     */
+    public int frequentRenterPoints(int frequentRenterPoints, Rental rental) {
+    	frequentRenterPoints++;
+    	
+    	// add bonus for a two day new release rental
+        if ((rental.getMovie().getPriceCode() == Movie.NEW_RELEASE) &&
+        		rental.getDaysRented() > 1) frequentRenterPoints++;
+        
+    	return frequentRenterPoints;
+    }
+    
     public String statement() {
         double totalCharge = 0;
         int frequentRenterPoints = 0;
@@ -27,13 +40,10 @@ public class Customer {
             Rental rental = (Rental) rentalIterator.next();
 
             //determine rental charge for each movie by calling the charge() method from Rental
-            charge = rental.charge();
-
-            // add frequent renter points
-            frequentRenterPoints++;
-            // add bonus for a two day new release rental
-            if ((rental.getMovie().getPriceCode() == Movie.NEW_RELEASE) &&
-            		rental.getDaysRented() > 1) frequentRenterPoints++;
+            charge = rental.charge();  
+            
+            //determine the frequent renter points
+            frequentRenterPoints = frequentRenterPoints(frequentRenterPoints, rental);
 
             //show figures for this rental
             result += rental.getDaysRented() +
