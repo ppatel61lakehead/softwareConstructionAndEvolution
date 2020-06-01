@@ -35,7 +35,7 @@ public class TestMovieRental extends TestCase {
         System.out.println(customer.statement());
     }
     
-    /*---- public void testHtmlCustomer() {
+    public void testHtmlCustomer() {
     	customer.addRental(rentMatrix);
     	customer.addRental(rentMatrix2);
     	assertEquals("<html><head><title>Rentals: John Hood</title></head><body>\n"+
@@ -47,6 +47,7 @@ public class TestMovieRental extends TestCase {
     		     "</table><p>Frequent renter points = 3</p>\n"+
     		     "</body></html>\n",
     		     customer.htmlStatement());
-        }
-    --- */
+    	
+    	System.out.println(customer.htmlStatement());
+    }
 }

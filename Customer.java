@@ -21,12 +21,12 @@ public class Customer {
     	return statement(new TextReport());
 	}
     
-    public String statement(TextReport textReport) {
+    public String statement(Report report) {
         double totalCharge = 0;
         int frequentRenterPoints = 0;
         Iterator rentalIterator = rentals.iterator();
         
-        String result = textReport.headerLine(getName());
+        String result = report.headerLine(getName());
         
     	//while loop is changed to for loop
         for (; rentalIterator.hasNext();) {
@@ -40,13 +40,17 @@ public class Customer {
             frequentRenterPoints = rental.frequentRenterPoints(frequentRenterPoints);
 
             //show figures for this rental
-            result += rental.rentalLine(textReport);
+            result += rental.rentalLine(report);
             
             totalCharge += charge;
         }
         
         //add footer lines
-        return result + textReport.footerLine(totalCharge, frequentRenterPoints);
+        return result + report.footerLine(totalCharge, frequentRenterPoints);
     }
+    
+    public String htmlStatement() {
+    	return statement(new HtmlReport());
+	}
 
 }
